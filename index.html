@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ramdani's Lessons — Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f1724;
+        --card: #0b1220;
+        --muted: #9aa4b2;
+        --accent: #6ee7b7;
+        --glass: rgba(255, 255, 255, 0.03);
+        --radius: 14px;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, #071021 0%, #0b1220 60%);
+        color: #e6eef6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 32px;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), #60a5fa);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #042029;
+      }
+      .brand h1 {
+        font-size: 18px;
+        margin: 0;
+      }
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 18px;
+        font-weight: 600;
+      }
+      .cta {
+        background: var(--accent);
+        color: #042029;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 14px;
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 28px;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+      .hero .intro h2 {
+        margin: 0 0 8px 0;
+        font-size: 28px;
+      }
+      .hero .intro p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .search-box {
+        margin-top: 18px;
+        display: flex;
+        gap: 8px;
+      }
+      .search {
+        flex: 1;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: var(--glass);
+        color: inherit;
+      }
+      .filters {
+        display: flex;
+        gap: 8px;
+      }
+      .filter {
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .hero-card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+      }
+      .hero-card h3 {
+        margin: 0 0 8px 0;
+      }
+      .hero-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* Grid */
+      .lessons-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .card {
+        background: var(--card);
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .thumb {
+        height: 120px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #12313d, #071829);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.6px;
+      }
+      .title {
+        font-weight: 700;
+      }
+      .desc {
+        font-size: 13px;
+        color: var(--muted);
+        flex: 1;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+      }
+      .btn {
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+      }
+      .primary {
+        background: var(--accent);
+        color: #042029;
+        border: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 1000px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .lessons-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        body {
+          padding: 18px;
+        }
+        .lessons-grid {
+          grid-template-columns: 1fr;
+        }
+        .logo {
+          width: 40px;
+          height: 40px;
+        }
+        .hero .intro h2 {
+          font-size: 22px;
+        }
+      }
+
+      /* subtle hover */
+      .card:hover {
+        transform: translateY(-6px);
+        transition: transform 180ms ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="logo">R</div>
+          <div>
+            <h1>Ramdani's Lessons</h1>
+            <p>Practical, hands-on lessons for web & programming</p>
+          </div>
+        </div>
+        <div>
+          <nav>
+            <a href="#lessons">Lessons</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a class="cta" href="#lessons">Start Learning</a>
+          </nav>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="intro">
+          <h2>Learn by doing — short lessons, big results</h2>
+          <p>
+            Choose a lesson and follow along. Each lesson contains explanations,
+            examples, and a short exercise you can try right away.
+          </p>
+
+          <div class="search-box">
+            <input
+              class="search"
+              id="search"
+              placeholder="Search lessons, e.g. PHP, Laravel, SQL..."
+            />
+            <div class="filters">
+              <button class="filter">All</button>
+              <button class="filter">Web</button>
+              <button class="filter">Database</button>
+            </div>
+          </div>
+
+          <p style="margin-top: 10px; font-size: 13px; color: var(--muted)">
+            <strong>Tip:</strong> Type and press Enter to filter the lessons
+            below.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <h3>Featured Lesson</h3>
+          <p>
+            Deploy a Laravel app — step-by-step guide with screenshots and
+            commands. Estimated time: 45–60 minutes.
+          </p>
+        </div>
+      </section>
+
+      <section id="lessons">
+        <h3 style="margin: 0 0 12px 0">All Lessons</h3>
+
+        <div class="lessons-grid" id="grid">
+          <!-- Example lesson cards -->
+          <article class="card" data-title="Intro to HTML">
+            <div class="thumb">HTML</div>
+            <div class="title">Intro to HTML</div>
+            <div class="desc">
+              Structure the web with semantic HTML tags and build your first
+              page.
+            </div>
+            <div class="meta">
+              <small class="muted">Beginner • 20m</small>
+              <button class="btn primary">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="CSS Grid Basics">
+            <div class="thumb">CSS</div>
+            <div class="title">CSS Grid Basics</div>
+            <div class="desc">
+              Learn CSS Grid layout and create responsive designs easily.
+            </div>
+            <div class="meta">
+              <small class="muted">Beginner • 30m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="Responsive Design">
+            <div class="thumb">RWD</div>
+            <div class="title">Responsive Design</div>
+            <div class="desc">
+              Techniques for building sites that look great on any device.
+            </div>
+            <div class="meta">
+              <small class="muted">Intermediate • 40m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="Intro to JavaScript">
+            <div class="thumb">JS</div>
+            <div class="title">Intro to JavaScript</div>
+            <div class="desc">
+              Make pages interactive with JavaScript fundamentals.
+            </div>
+            <div class="meta">
+              <small class="muted">Beginner • 45m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="PHP & Laravel Basics">
+            <div class="thumb">PHP</div>
+            <div class="title">PHP &amp; Laravel Basics</div>
+            <div class="desc">
+              Build a simple CRUD application using Laravel and MySQL.
+            </div>
+            <div class="meta">
+              <small class="muted">Intermediate • 60m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="Postman & APIs">
+            <div class="thumb">API</div>
+            <div class="title">Postman &amp; APIs</div>
+            <div class="desc">
+              Learn how to test and document APIs using Postman.
+            </div>
+            <div class="meta">
+              <small class="muted">Beginner • 35m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="SQL Basics">
+            <div class="thumb">SQL</div>
+            <div class="title">SQL Basics</div>
+            <div class="desc">
+              SELECT, JOIN, GROUP BY — essential queries for working with
+              databases.
+            </div>
+            <div class="meta">
+              <small class="muted">Beginner • 40m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+
+          <article class="card" data-title="Deploy Laravel App">
+            <div class="thumb">DEPLOY</div>
+            <div class="title">Deploy Laravel App</div>
+            <div class="desc">
+              Step-by-step deployment: server setup, env, migrations, and more.
+            </div>
+            <div class="meta">
+              <small class="muted">Advanced • 60m</small>
+              <button class="btn">Open</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer style="margin-top: 28px; color: var(--muted); font-size: 13px">
+        <div>
+          Made with ❤️ by Ramdani •
+          <a
+            href="#about"
+            style="color: var(--muted); text-decoration: underline"
+            >About</a
+          >
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Simple client-side filter (no server required)
+      const search = document.getElementById("search");
+      const cards = Array.from(document.querySelectorAll(".card"));
+      search.addEventListener("keyup", (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        cards.forEach((c) => {
+          const title = c.dataset.title.toLowerCase();
+          c.style.display = title.includes(q) ? "" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>
